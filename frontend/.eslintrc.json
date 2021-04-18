@@ -11,7 +11,9 @@
     "prettier/prettier": [2, {
       "endOfLine": "auto"
     }],
-    "arrow-body-style": 1
+    "arrow-body-style": 1,
+    "react/jsx-fragments": 0,
+    "react/prop-types": 0
   },
   "settings": {
     "react": {
