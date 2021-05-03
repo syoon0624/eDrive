@@ -40,6 +40,16 @@ export const buttonColorMap = {
     color: 'white',
     hoverBackground: palette.blue5,
   },
+  gray: {
+    background: palette.gray2,
+    color: 'black',
+    hoverBackground: palette.gray5,
+  },
+  white: {
+    background: 'white',
+    color: 'black',
+    hoverBackground: palette.gray2,
+  },
 };
 
 export const inputColorMap = {
@@ -64,6 +74,11 @@ export const dropdownHeaderColorMap = {
     color: 'white',
     hoverBackground: palette.blue5,
     borderColor: palette.blue8,
+  },
+  white: {
+    background: 'white',
+    color: 'black',
+    hoverBackground: palette.gray2,
   },
 };
 
