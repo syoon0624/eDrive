@@ -10,22 +10,28 @@ const DropDownBlock = styled.div`
 const DropDownHeader = styled.button`
   margin-bottom: 0.8em;
   padding: 0.4em;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-  font-weight: 500;
-  font-size: ${props => props.size};
-  border: 2px solid ${props => dropdownHeaderColorMap[props.color].borderColor};
+  width: ${props => props.width || '100px'};
+  line-height: ${props => props.height || '30px'};
+  padding-right: 30px;
+  font-size: ${props => props.fontsize || '20px'};
   color: ${props => dropdownHeaderColorMap[props.color].color};
   background-color: ${props => dropdownHeaderColorMap[props.color].background};
   &:hover {
     background-color: ${props =>
       dropdownHeaderColorMap[props.color].hoverBackground};
   }
+  border: 1px ${props => dropdownHeaderColorMap[props.color].background};
 `;
 
-const DropDown = ({ children, float, color, size }) => {
+const DropDown = ({ children, float, color, fontsize, width, height }) => {
   return (
-    <DropDownBlock float={float} color={color} size={size}>
-      <DropDownHeader color={color} size={size}>
+    <DropDownBlock float={float} color={color}>
+      <DropDownHeader
+        color={color}
+        fontsize={fontsize}
+        width={width}
+        height={height}
+      >
         {children}
       </DropDownHeader>
     </DropDownBlock>
