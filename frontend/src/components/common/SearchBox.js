@@ -14,6 +14,7 @@ const ButtonBlock = styled.button`
   }
   color: ${props => searchBoxColorMap[props.color].color};
   float: ${props => props.float || ''};
+  border: 1px ${props => searchBoxColorMap[props.color].background};
 `;
 
 const SearchBox = ({ color, float, size }) => {
