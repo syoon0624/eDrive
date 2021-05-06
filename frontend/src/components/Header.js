@@ -14,7 +14,6 @@ const HeaderTop = styled.div`
   float: up;
   height: 20px;
 `;
-
 const MainContainer = styled.div`
   height: ${HeaderHeight};
   position: fixed;
