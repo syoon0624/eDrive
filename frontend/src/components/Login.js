@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../lib/styles/palette';
 import Button from './common/Button';
@@ -80,6 +81,11 @@ const ButtonBlock = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+
+  a {
+    color: ${palette.blue6};
+    text-decoration: none;
+  }
 `;
 
 const Login = () => {
@@ -96,7 +102,7 @@ const Login = () => {
         <div className="label">Password</div>
       </InputBox>
       <ButtonBlock>
-        <div>홈으로</div>
+        <Link to="/">홈으로</Link>
         <Button color="blue">로그인</Button>
       </ButtonBlock>
     </FormBlock>
