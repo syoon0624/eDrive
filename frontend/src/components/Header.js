@@ -5,7 +5,7 @@ import InputBlock from './common/Input';
 import SearchBox from './common/SearchBox';
 import DropDownButton from './common/DropdownButton';
 import Button from './common/Button';
-
+import Modal from './SearchOptionModal';
 // 헤더 사이즈
 const HeaderHeight = '170px';
 
@@ -22,7 +22,7 @@ const MainContainer = styled.div`
   width: 100%;
   z-index: 999;
   background-color: #ffffff;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #868e96;
 `;
 const MenuContainer = styled.div`
   position: fixed;
@@ -86,11 +86,22 @@ const OptionContainer = styled.div`
   left: 650px;
 `;
 
+const UserContainer = styled.div`
+  position: fixed;
+  top: 35px;
+  right: 0;
+  padding-right: 20px;
+`;
+
 const AirContainer = styled.div`
   height: ${HeaderHeight};
 `;
 
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(prev => !prev);
+  };
   const [setQuery] = useState('');
   const history = useHistory();
   const onMainClick = () => {
@@ -127,9 +138,10 @@ const Header = () => {
           </ul>
         </MenuContainer>
         <OptionContainer>
-          <SearchOptionContainer>
-            <Button color="white">고급검색</Button>
+          <SearchOptionContainer onClick={openModal}>
+            <Button color="white">고급 검색</Button>
           </SearchOptionContainer>
+          <Modal showModal={showModal} setShowModal={setShowModal} />
           <SortOptionContainer>
             <DropDownButton
               color="white"
@@ -141,6 +153,11 @@ const Header = () => {
             </DropDownButton>
           </SortOptionContainer>
         </OptionContainer>
+        <UserContainer>
+          <Button color="white" width="100px" height="50px" fontsize="20px">
+            사용자 님
+          </Button>
+        </UserContainer>
       </MainContainer>
       <AirContainer />
     </>
