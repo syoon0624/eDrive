@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import InputBlock from './common/Input';
-import SearchBox from './common/SearchBox';
 import DropDownButton from './common/DropdownButton';
 import Button from './common/Button';
 import Modal from './SearchOptionModal';
+import palette from '../lib/styles/palette';
+
 // 헤더 사이즈
 const HeaderHeight = '170px';
 
@@ -20,12 +21,12 @@ const MainContainer = styled.div`
   top: 0;
   width: 100%;
   z-index: 999;
-  background-color: #ffffff;
-  border-bottom: 1px solid #868e96;
+  background-color: white;
+  border-bottom: 1px solid ${palette.gray4};
 `;
 const MenuContainer = styled.div`
-  position: fixed;
-  top: 100px;
+  position: absolute;
+  top: 96px;
   left: 0px;
 `;
 
@@ -55,11 +56,12 @@ const SLink = styled(NavLink)`
   padding-right: 2em;
   text-decoration: none !important;
   &:hover {
-    background-color: #feebb6;
+    background-color: ${palette.gray4};
+    border-bottom: 3px solid ${palette.gray4};
   }
   &.active {
     font-weight: 600;
-    background-color: #feebb6;
+    border-bottom: 3px solid ${palette.gray6};
     float: left;
     line-height: 55px;
     vertical-align: middle;
@@ -70,7 +72,7 @@ const SLink = styled(NavLink)`
     text-decoration: none !important;
   }
 `;
-
+const DropDownWrap = styled.div``;
 const SearchOptionContainer = styled.div`
   float: left;
 `;
@@ -80,8 +82,8 @@ const SortOptionContainer = styled.div`
 `;
 
 const OptionContainer = styled.div`
-  position: fixed;
-  top: 130px;
+  position: absolute;
+  top: 129px;
   left: 650px;
 `;
 
@@ -96,44 +98,51 @@ const AirContainer = styled.div`
   height: ${HeaderHeight};
 `;
 
+const DropDownContainer = styled.div`
+  flex-direction: column;
+`;
+
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal(prev => !prev);
   };
-  const [setQuery] = useState('');
   const history = useHistory();
   const onMainClick = () => {
-    setQuery('');
     history.push('');
   };
-
   return (
     <>
       <MainContainer>
         <HeaderTop />
         <LogoContainer onClick={onMainClick}>로고</LogoContainer>
         <SearchContainer>
-          <DropDownButton
-            color="blue"
-            float="left"
-            fontsize="20px"
-            height="34px"
-          >
-            전체
-          </DropDownButton>
-          <InputBlock color="blue" size="14px" float="left" width="400px">
+          <DropDownContainer>
+            <DropDownWrap>
+              <DropDownButton
+                color="blue"
+                float="left"
+                fontsize="20px"
+                height="50px"
+                options={[
+                  { id: 1, name: '전체' },
+                  { id: 2, name: '개인' },
+                  { id: 3, name: '부서' },
+                ]}
+              />
+            </DropDownWrap>
+          </DropDownContainer>
+          <InputBlock color="blue" size="14px" width="400px">
             <input />
           </InputBlock>
-          <SearchBox color="blue" size="50px" />
         </SearchContainer>
         <MenuContainer>
           <ul>
-            <SLink activeClassName="active" to="categori0">
+            <SLink activeClassName="active" to="/search">
               전체
             </SLink>
-            <SLink to="/categori1">개인</SLink>
-            <SLink to="/categori2">부서</SLink>
+            <SLink to="/search_categori1">개인</SLink>
+            <SLink to="/search_categori2">부서</SLink>
           </ul>
         </MenuContainer>
         <OptionContainer>
@@ -144,9 +153,15 @@ const Header = () => {
           <SortOptionContainer>
             <DropDownButton
               color="white"
-              width="80px"
-              fontsize="15px"
-              height="28px"
+              width="85px"
+              fontsize="16px"
+              height="38px"
+              options={[
+                { value: 0, name: '정렬' },
+                { value: 1, name: '날짜빠른순' },
+                { value: 2, name: '크기높은순' },
+                { value: 3, name: '크기낮은순' },
+              ]}
             >
               정렬
             </DropDownButton>
