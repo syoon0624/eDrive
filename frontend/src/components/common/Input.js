@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import SearchBox from './SearchBox';
 import { inputColorMap } from '../../lib/styles/palette';
 
 const InputBlock = styled.div`
@@ -17,17 +18,33 @@ const InputBlock = styled.div`
       color: ${props => inputColorMap[props.color].placeholder};
       text-transform: uppercase;
     }
+    float: left;
   }
   float: ${props => props.float || ''};
 `;
+const SearchIconWrap = styled.div``;
 
-const Input = ({ color, size, float, width }) => {
+const Input = ({
+  color,
+  size,
+  float,
+  width,
+  placeholder = '내용을 입력해 주세요.',
+  display,
+}) => {
   const [query, setQuery] = useState('');
   const history = useHistory();
   return (
-    <InputBlock color={color} size={size} float={float} width={width}>
+    <InputBlock
+      color={color}
+      size={size}
+      float={float}
+      width={width}
+      placeholder={placeholder}
+      display={display}
+    >
       <input
-        placeholder="내용을 입력해 주세요."
+        placeholder={placeholder}
         type="text"
         value={query}
         onChange={e => setQuery(e.target.value)}
@@ -42,6 +59,14 @@ const Input = ({ color, size, float, width }) => {
           }
         }}
       />
+      <SearchIconWrap
+        onClick={() => {
+          const params = new URLSearchParams({ query });
+          history.push(`?${params.toString()}`);
+        }}
+      >
+        <SearchBox color="blue" size="50px" display={display} />
+      </SearchIconWrap>
     </InputBlock>
   );
 };
