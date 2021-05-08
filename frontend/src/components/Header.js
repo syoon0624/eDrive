@@ -132,7 +132,7 @@ const Header = () => {
               />
             </DropDownWrap>
           </DropDownContainer>
-          <InputBlock color="blue" size="14px" width="400px">
+          <InputBlock color="blue" size="14px" width="400px" display="">
             <input />
           </InputBlock>
         </SearchContainer>

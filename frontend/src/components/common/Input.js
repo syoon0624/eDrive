@@ -30,7 +30,7 @@ const Input = ({
   float,
   width,
   placeholder = '내용을 입력해 주세요.',
-  value,
+  display,
 }) => {
   const [query, setQuery] = useState('');
   const history = useHistory();
@@ -41,7 +41,7 @@ const Input = ({
       float={float}
       width={width}
       placeholder={placeholder}
-      value={value}
+      display={display}
     >
       <input
         placeholder={placeholder}
@@ -65,7 +65,7 @@ const Input = ({
           history.push(`?${params.toString()}`);
         }}
       >
-        <SearchBox color="blue" size="50px" />
+        <SearchBox color="blue" size="50px" display={display} />
       </SearchIconWrap>
     </InputBlock>
   );
