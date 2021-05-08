@@ -32,34 +32,34 @@ const ModalContent = styled.div`
 `;
 
 const SearchWrap = styled.div`
-  position: fixed;
-  top: 50%;
-  right: 43%;
+  position: absolute;
+  top: 80%;
+  left: 20%;
 `;
 
 const CloseWrap = styled.div`
-  position: fixed;
-  top: 50%;
-  right: 32%;
+  position: absolute;
+  top: 80%;
+  right: 20%;
 `;
 
 const StandardWrap = styled.div`
+  position: absolute;
   width: 50px;
-  position: fixed;
-  top: 18%;
-  right: 43%;
+  top: 15px;
+  left: 30%;
 `;
 
 const AdvancedWrap = styled.div`
   width: 50px;
-  position: fixed;
-  top: 27%;
-  right: 43%;
+  position: absolute;
+  top: 75px;
+  left: 30%;
 `;
 
 const TextWrap = styled.div`
-  position: fixed;
-  width: 340px;
+  position: absolute;
+  width: 360px;
   top: ${props => props.top};
   right: ${props => props.right};
   border-bottom: 2px solid #dee2e6;
@@ -81,21 +81,39 @@ const Modal = ({ showModal, setShowModal }) => {
         <Background onClick={closeModal}>
           <ModalWrapper>
             <ModalContent>
-              <TextWrap top="18.5%" right="28.5%" bottom="19px">
+              <TextWrap top="15px" right="20px" bottom="19px">
                 기본검색
               </TextWrap>
               <StandardWrap>
                 <Input float="left" color="blue" width="140px" size="10px" />
               </StandardWrap>
-              <TextWrap top="27%" right="28.5%" bottom="137px">
+              <TextWrap top="75px" right="20px" bottom="137px">
                 고급검색
               </TextWrap>
               <AdvancedWrap>
-                <Input float="left" color="blue" width="140px" size="10px" />
+                <Input
+                  float="left"
+                  color="blue"
+                  width="140px"
+                  size="10px"
+                  placeholder="단어/ 문장검색"
+                />
                 <br /> <br />
-                <Input float="left" color="blue" width="140px" size="10px" />
+                <Input
+                  float="left"
+                  color="blue"
+                  width="140px"
+                  size="10px"
+                  placeholder="최초 작성자"
+                />
                 <br /> <br />
-                <Input float="left" color="blue" width="140px" size="10px" />
+                <Input
+                  float="left"
+                  color="blue"
+                  width="140px"
+                  size="10px"
+                  placeholder="최종 수정자"
+                />
               </AdvancedWrap>
             </ModalContent>
             <CloseWrap onClick={() => setShowModal(prev => !prev)}>
