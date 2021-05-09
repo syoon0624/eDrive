@@ -1,7 +1,7 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SearchPage from './pages/SearchPage';
 
@@ -26,7 +26,7 @@ const App = () => (
   <BrowserRouter>
     <GlobalStyle />
     <Switch>
-      <Route path="/" exact component={Home} />
+      <Route path="/" exact component={HomePage} />
       <Route path="/login" exact component={LoginPage} />
       <Route path="/search" exact component={SearchPage} />
     </Switch>

@@ -5,7 +5,7 @@ const Main = styled.div`
   width: 100%;
 `;
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Main>Home</Main>
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
