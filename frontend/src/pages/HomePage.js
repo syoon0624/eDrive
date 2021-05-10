@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 import DropDownButton from '../components/common/DropdownButton';
 import Input from '../components/common/Input';
@@ -40,7 +41,9 @@ const HomePage = () => {
 
       {/* Todo : 로그인 했을 경우 로그인 버튼 숨기기 */}
       <LoginButtonBlock>
-        <Button>로그인</Button>
+        <Link to="/login">
+          <Button>로그인</Button>
+        </Link>
       </LoginButtonBlock>
     </Main>
   );
