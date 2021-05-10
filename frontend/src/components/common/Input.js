@@ -55,14 +55,14 @@ const Input = ({
               return;
             }
             const params = new URLSearchParams({ query });
-            history.push(`?${params.toString()}`);
+            history.push(`search?${params.toString()}`);
           }
         }}
       />
       <SearchIconWrap
         onClick={() => {
           const params = new URLSearchParams({ query });
-          history.push(`?${params.toString()}`);
+          history.push(`search?${params.toString()}`);
         }}
       >
         <SearchBox color="blue" size="50px" display={display} />
