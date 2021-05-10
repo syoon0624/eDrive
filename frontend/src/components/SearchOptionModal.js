@@ -81,11 +81,18 @@ const Modal = ({ showModal, setShowModal }) => {
         <Background onClick={closeModal}>
           <ModalWrapper>
             <ModalContent>
-              <TextWrap top="15px" right="20px" bottom="19px">
+              <TextWrap top="15px" right="20px" bottom="19px" height="40px">
                 기본검색
               </TextWrap>
               <StandardWrap>
-                <Input float="left" color="blue" width="140px" size="10px" />
+                <Input
+                  float="left"
+                  color="blue"
+                  width="350px"
+                  height="40px"
+                  paddingsize="3px"
+                  fontsize="15px"
+                />
               </StandardWrap>
               <TextWrap top="75px" right="20px" bottom="137px">
                 고급검색
@@ -94,24 +101,30 @@ const Modal = ({ showModal, setShowModal }) => {
                 <Input
                   float="left"
                   color="blue"
-                  width="140px"
-                  size="10px"
+                  width="350px"
+                  height="40px"
+                  paddingsize="3px"
+                  fontsize="15px"
                   placeholder="단어/ 문장검색"
                 />
                 <br /> <br />
                 <Input
                   float="left"
                   color="blue"
-                  width="140px"
-                  size="10px"
+                  width="350px"
+                  height="40px"
+                  paddingsize="3px"
+                  fontsize="15px"
                   placeholder="최초 작성자"
                 />
                 <br /> <br />
                 <Input
                   float="left"
                   color="blue"
-                  width="140px"
-                  size="10px"
+                  width="350px"
+                  height="40px"
+                  paddingsize="3px"
+                  fontsize="15px"
                   placeholder="최종 수정자"
                 />
               </AdvancedWrap>

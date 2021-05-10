@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Menu, MenuItem } from '@mantine/core';
 import styled from 'styled-components';
 import { dropdownHeaderColorMap } from '../../lib/styles/palette';
 
@@ -6,30 +7,23 @@ const DropDownBlock = styled.div`
   margin: 0 auto;
   float: ${props => props.float || ''};
 `;
-const DropDownHeader = styled.select`
+const DropDownHeader = styled(Menu)``;
+
+const DropDownWrap = styled.button`
+  color: ${props => dropdownHeaderColorMap[props.color].color};
+  background-color: ${props => dropdownHeaderColorMap[props.color].background};
+  cursor: pointer;
+  &:hover {
+    background-color: ${props =>
+      dropdownHeaderColorMap[props.color].hoverBackground};
+  }
   margin-bottom: 0.8em;
   padding: 0.4em;
   width: ${props => props.width || '100px'};
   height: ${props => props.height || '30px'};
   padding-right: 30px;
   font-size: ${props => props.fontsize || '20px'};
-  cursor: pointer;
-  color: ${props => dropdownHeaderColorMap[props.color].color};
-  background-color: ${props => dropdownHeaderColorMap[props.color].background};
-  &:hover {
-    background-color: ${props =>
-      dropdownHeaderColorMap[props.color].hoverBackground};
-  }
   border: 1px ${props => dropdownHeaderColorMap[props.color].background};
-
-  option {
-    color: blue;
-    background-color: blue;
-    display: flex;
-    white-space: pre;
-    min-height: 20px;
-    padding: 0px 2px 1px;
-  }
 `;
 
 const DropDown = ({
@@ -39,18 +33,36 @@ const DropDown = ({
   fontsize,
   width,
   height,
+  title = '전체',
 }) => {
+  const [menuTitle, setTitle] = useState('');
+  useEffect(() => {
+    setTitle(title);
+  }, []);
   return (
-    <DropDownBlock float={float} color={color}>
+    <DropDownBlock float={float} color={color} title={title}>
       <DropDownHeader
-        options={options}
-        color={color}
-        fontsize={fontsize}
-        width={width}
-        height={height}
+        control={
+          <DropDownWrap
+            options={options}
+            color={color}
+            fontsize={fontsize}
+            width={width}
+            height={height}
+          >
+            {menuTitle}
+          </DropDownWrap>
+        }
       >
         {options.map(friend => (
-          <option value={friend.id}>{friend.name}</option>
+          <MenuItem
+            value={friend.id}
+            onClick={() => {
+              setTitle(friend.name);
+            }}
+          >
+            {friend.name}
+          </MenuItem>
         ))}
       </DropDownHeader>
     </DropDownBlock>

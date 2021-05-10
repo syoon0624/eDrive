@@ -132,7 +132,7 @@ const Header = () => {
               />
             </DropDownWrap>
           </DropDownContainer>
-          <InputBlock color="blue" size="14px" width="400px" display="">
+          <InputBlock color="blue" fontsize="20px" width="850px" display="">
             <input />
           </InputBlock>
         </SearchContainer>
@@ -156,15 +156,14 @@ const Header = () => {
               width="85px"
               fontsize="16px"
               height="38px"
+              title="정렬"
               options={[
-                { value: 0, name: '정렬' },
-                { value: 1, name: '날짜빠른순' },
-                { value: 2, name: '크기높은순' },
-                { value: 3, name: '크기낮은순' },
+                { id: 0, name: '정렬' },
+                { id: 1, name: '날짜빠른순' },
+                { id: 2, name: '크기높은순' },
+                { id: 3, name: '크기낮은순' },
               ]}
-            >
-              정렬
-            </DropDownButton>
+            />
           </SortOptionContainer>
         </OptionContainer>
         <UserContainer>
