@@ -21,7 +21,7 @@ const DropDownWrap = styled.button`
   padding: 0.4em;
   width: ${props => props.width || '100px'};
   height: ${props => props.height || '30px'};
-  padding-right: 30px;
+  padding-right: 7%;
   font-size: ${props => props.fontsize || '20px'};
   border: 1px ${props => dropdownHeaderColorMap[props.color].background};
 `;

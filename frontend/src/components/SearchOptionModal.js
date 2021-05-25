@@ -1,25 +1,14 @@
 import React, { useRef } from 'react';
+import { Card } from '@mantine/core';
 import styled from 'styled-components';
 import Button from './common/Button';
 import Input from './common/Input';
 
-const Background = styled.div`
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+const Background = styled.div``;
+
 const ModalWrapper = styled.div`
   width: 400px;
-  height: 350px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-  z-index: 10;
-  border-radius: 10px;
+  height: 300px;
 `;
 
 const ModalContent = styled.div`
@@ -79,67 +68,69 @@ const Modal = ({ showModal, setShowModal }) => {
     <>
       {showModal ? (
         <Background onClick={closeModal}>
-          <ModalWrapper>
-            <ModalContent>
-              <TextWrap top="15px" right="20px" bottom="19px" height="40px">
-                기본검색
-              </TextWrap>
-              <StandardWrap>
-                <Input
-                  float="left"
-                  color="blue"
-                  width="350px"
-                  height="40px"
-                  paddingsize="3px"
-                  fontsize="15px"
-                />
-              </StandardWrap>
-              <TextWrap top="75px" right="20px" bottom="137px">
-                고급검색
-              </TextWrap>
-              <AdvancedWrap>
-                <Input
-                  float="left"
-                  color="blue"
-                  width="350px"
-                  height="40px"
-                  paddingsize="3px"
-                  fontsize="15px"
-                  placeholder="단어/ 문장검색"
-                />
-                <br /> <br />
-                <Input
-                  float="left"
-                  color="blue"
-                  width="350px"
-                  height="40px"
-                  paddingsize="3px"
-                  fontsize="15px"
-                  placeholder="최초 작성자"
-                />
-                <br /> <br />
-                <Input
-                  float="left"
-                  color="blue"
-                  width="350px"
-                  height="40px"
-                  paddingsize="3px"
-                  fontsize="15px"
-                  placeholder="최종 수정자"
-                />
-              </AdvancedWrap>
-            </ModalContent>
-            <CloseWrap onClick={() => setShowModal(prev => !prev)}>
-              <Button width="100px" color="blue">
-                닫기
-              </Button>
-            </CloseWrap>
-            <SearchWrap>
-              <Button width="100px" color="gray">
-                검색
-              </Button>
-            </SearchWrap>
-          </ModalWrapper>
+          <Card shadow="lg">
+            <ModalWrapper>
+              <ModalContent>
+                <TextWrap top="6%" right="10%" bottom="4%" height="40px">
+                  기본검색
+                </TextWrap>
+                <StandardWrap>
+                  <Input
+                    float="left"
+                    color="blue"
+                    width="350px"
+                    height="40px"
+                    paddingsize="3px"
+                    fontsize="15px"
+                  />
+                </StandardWrap>
+                <TextWrap top="24%" right="10%" bottom="31%">
+                  고급검색
+                </TextWrap>
+                <AdvancedWrap>
+                  <Input
+                    float="left"
+                    color="blue"
+                    width="350px"
+                    height="40px"
+                    paddingsize="3px"
+                    fontsize="15px"
+                    placeholder="단어/ 문장검색"
+                  />
+                  <br /> <br />
+                  <Input
+                    float="left"
+                    color="blue"
+                    width="350px"
+                    height="40px"
+                    paddingsize="3px"
+                    fontsize="15px"
+                    placeholder="최초 작성자"
+                  />
+                  <br /> <br />
+                  <Input
+                    float="left"
+                    color="blue"
+                    width="350px"
+                    height="40px"
+                    paddingsize="3px"
+                    fontsize="15px"
+                    placeholder="최종 수정자"
+                  />
+                </AdvancedWrap>
+              </ModalContent>
+              <CloseWrap onClick={() => setShowModal(prev => !prev)}>
+                <Button width="100px" color="blue">
+                  닫기
+                </Button>
+              </CloseWrap>
+              <SearchWrap>
+                <Button width="100px" color="gray">
+                  검색
+                </Button>
+              </SearchWrap>
+            </ModalWrapper>
+          </Card>
         </Background>
       ) : null}
     </>
