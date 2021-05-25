@@ -1,34 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { buttonColorMap } from '../../lib/styles/palette';
+import { Button } from '@mantine/core';
 
-const ButtonBlock = styled.button`
+const ButtonBlock = styled.div`
   width: ${props => props.width || '80px'};
-  height: ${props => props.height || '40px'};
   font-size: ${props => props.fontsize || '15px'};
-  background-color: ${props => buttonColorMap[props.color].background};
-  &:hover {
-    background-color: ${props => buttonColorMap[props.color].hoverBackground};
-  }
-  color: ${props => buttonColorMap[props.color].color};
   float: ${props => props.float || ''};
   border-radius: 0.3em;
   cursor: pointer;
-  border: 1px ${props => buttonColorMap[props.color].background};
 `;
 
-const Button = ({ children, color, float, width, height, fontsize }) => {
+const Buttons = ({ children, color, float, width, fontsize }) => {
   return (
-    <ButtonBlock
-      color={color || 'blue'}
-      float={float}
-      width={width}
-      height={height}
-      fontsize={fontsize}
-    >
-      {children}
+    <ButtonBlock float={float} width={width} fontsize={fontsize}>
+      <Button fullWidth size="lg" color={color || 'blue'}>
+        {children}
+      </Button>
     </ButtonBlock>
   );
 };
 
-export default Button;
+export default Buttons;

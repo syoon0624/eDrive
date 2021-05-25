@@ -31,14 +31,15 @@ const MenuContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
   float: left;
   padding: 20px;
   img {
-    width: 100px;
+    width: 130px;
 
     vertical-align: bottom;
   }
+  cursor: pointer;
 `;
 
 const SearchContainer = styled.div`
@@ -83,8 +84,8 @@ const SortOptionContainer = styled.div`
 
 const OptionContainer = styled.div`
   position: absolute;
-  top: 129px;
-  left: 650px;
+  top: 132px;
+  left: 750px;
 `;
 
 const UserContainer = styled.div`
@@ -115,7 +116,9 @@ const Header = () => {
     <>
       <MainContainer>
         <HeaderTop />
-        <LogoContainer onClick={onMainClick}>로고</LogoContainer>
+        <LogoContainer onClick={onMainClick}>
+          <img src="eDrive_logo_v2.png" alt="" />
+        </LogoContainer>
         <SearchContainer>
           <DropDownContainer>
             <DropDownWrap>
@@ -124,15 +127,11 @@ const Header = () => {
                 float="left"
                 fontsize="20px"
                 height="50px"
-                options={[
-                  { id: 1, name: '전체' },
-                  { id: 2, name: '개인' },
-                  { id: 3, name: '부서' },
-                ]}
+                options={[{ id: 1, name: '전체' }]}
               />
             </DropDownWrap>
           </DropDownContainer>
-          <InputBlock color="blue" size="14px" width="400px" display="">
+          <InputBlock color="blue" fontsize="20px" width="850px" display="">
             <input />
           </InputBlock>
         </SearchContainer>
@@ -141,34 +140,31 @@ const Header = () => {
             <SLink activeClassName="active" to="/search">
               전체
             </SLink>
-            <SLink to="/search_categori1">개인</SLink>
-            <SLink to="/search_categori2">부서</SLink>
           </ul>
         </MenuContainer>
         <OptionContainer>
-          <SearchOptionContainer onClick={openModal}>
-            <Button color="white">고급 검색</Button>
-          </SearchOptionContainer>
-          <Modal showModal={showModal} setShowModal={setShowModal} />
           <SortOptionContainer>
             <DropDownButton
               color="white"
               width="85px"
-              fontsize="16px"
-              height="38px"
+              fontsize="15px"
+              height="36px"
+              title="정렬(기본)"
               options={[
-                { value: 0, name: '정렬' },
-                { value: 1, name: '날짜빠른순' },
-                { value: 2, name: '크기높은순' },
-                { value: 3, name: '크기낮은순' },
+                { id: 0, name: '정렬(기본)' },
+                { id: 1, name: '날짜빠른순' },
+                { id: 2, name: '크기높은순' },
+                { id: 3, name: '크기낮은순' },
               ]}
-            >
-              정렬
-            </DropDownButton>
+            />
           </SortOptionContainer>
+          <SearchOptionContainer onClick={openModal}>
+            <Button color="gray">고급 검색</Button>
+          </SearchOptionContainer>
+          <Modal showModal={showModal} setShowModal={setShowModal} />
         </OptionContainer>
         <UserContainer>
-          <Button color="white" width="100px" height="50px" fontsize="20px">
+          <Button color="blue" width="100px" height="50px" fontsize="20px">
             사용자 님
           </Button>
         </UserContainer>
