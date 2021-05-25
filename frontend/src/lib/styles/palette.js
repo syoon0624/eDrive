@@ -38,12 +38,12 @@ export const buttonColorMap = {
   blue: {
     background: palette.blue6,
     color: 'white',
-    hoverBackground: palette.blue5,
+    hoverBackground: palette.blue7,
   },
   gray: {
-    background: palette.gray2,
+    background: palette.gray7,
     color: 'black',
-    hoverBackground: palette.gray5,
+    hoverBackground: palette.gray8,
   },
   white: {
     background: 'white',
