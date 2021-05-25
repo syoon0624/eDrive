@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
+import Main from '../components/document/index';
 
-const LoginPage = () => {
+const SearchPage = () => {
   return (
     <>
       <Header />
+      <Main />
     </>
   );
 };
 
-export default LoginPage;
+export default SearchPage;
