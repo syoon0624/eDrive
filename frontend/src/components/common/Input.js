@@ -78,6 +78,10 @@ const MyInput = ({
       </InputWrap>
       <SearchIconWrap
         onClick={() => {
+          if (query === '') {
+            alert('검색어를 입력 해 주세요.');
+            return;
+          }
           const params = new URLSearchParams({ query });
           history.push(`search?${decodeURIComponent(params.toString())}`);
         }}
