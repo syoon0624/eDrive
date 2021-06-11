@@ -17,7 +17,6 @@ const InputWrap = styled.div`
   width: 70%;
   height: 100%;
   color: ${props => inputColorMap[props.color].color};
-  box-shadow: 2px 3px 28px 1px rgba(0, 0, 0, 0.1);
   outline: none;
   font-size: ${props => props.size};
   border: 3px solid ${props => inputColorMap[props.color].borderColor};
@@ -63,7 +62,7 @@ const MyInput = ({
           variant="unstyled"
           placeholder={placeholder}
           type="text"
-          value={query}
+          value={decodeURIComponent(query)}
           onChange={e => setQuery(e.target.value)}
           onKeyPress={e => {
             if (e.key === 'Enter') {
@@ -72,15 +71,19 @@ const MyInput = ({
                 return;
               }
               const params = new URLSearchParams({ query });
-              history.push(`search?${params.toString()}`);
+              history.push(`search?${decodeURIComponent(params.toString())}`);
             }
           }}
         />
       </InputWrap>
       <SearchIconWrap
         onClick={() => {
+          if (query === '') {
+            alert('검색어를 입력 해 주세요.');
+            return;
+          }
           const params = new URLSearchParams({ query });
-          history.push(`search?${params.toString()}`);
+          history.push(`search?${decodeURIComponent(params.toString())}`);
         }}
       >
         <SearchBox color="blue" size="50px" display={display} />

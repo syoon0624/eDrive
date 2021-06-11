@@ -10,10 +10,18 @@ const ButtonBlock = styled.div`
   cursor: pointer;
 `;
 
-const Buttons = ({ children, color, float, width, fontsize }) => {
+const Buttons = ({
+  children,
+  size = 'lg',
+  color,
+  float,
+  width,
+  fontsize,
+  icon = '',
+}) => {
   return (
     <ButtonBlock float={float} width={width} fontsize={fontsize}>
-      <Button fullWidth size="lg" color={color || 'blue'}>
+      <Button size={size} color={color || 'blue'} rightIcon={icon}>
         {children}
       </Button>
     </ButtonBlock>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 import styled from 'styled-components';
 import InputBlock from './common/Input';
 import DropDownButton from './common/DropdownButton';
@@ -123,6 +124,8 @@ const Header = () => {
           <DropDownContainer>
             <DropDownWrap>
               <DropDownButton
+                menuPosition={{ top: 40 }}
+                size={100}
                 color="blue"
                 float="left"
                 fontsize="20px"
@@ -146,20 +149,24 @@ const Header = () => {
           <SortOptionContainer>
             <DropDownButton
               color="white"
-              width="85px"
+              width="100px"
               fontsize="15px"
               height="36px"
               title="정렬(기본)"
+              menuPosition={{ top: 29 }}
+              size="100"
               options={[
                 { id: 0, name: '정렬(기본)' },
                 { id: 1, name: '날짜빠른순' },
                 { id: 2, name: '크기높은순' },
                 { id: 3, name: '크기낮은순' },
               ]}
-            />
+            />{' '}
           </SortOptionContainer>
           <SearchOptionContainer onClick={openModal}>
-            <Button color="gray">고급 검색</Button>
+            <Button color="gray" size="md" icon={<FaSearch />}>
+              고급 검색
+            </Button>
           </SearchOptionContainer>
           <Modal showModal={showModal} setShowModal={setShowModal} />
         </OptionContainer>
