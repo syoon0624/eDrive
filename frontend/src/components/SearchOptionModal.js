@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import { Card } from '@mantine/core';
+import React, { useRef, useState } from 'react';
+import { Card, TextInput } from '@mantine/core';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './common/Button';
-import Input from './common/Input';
 
 const Background = styled.div``;
 
@@ -34,13 +34,13 @@ const CloseWrap = styled.div`
 
 const StandardWrap = styled.div`
   position: absolute;
-  width: 50px;
+  width: 250px;
   top: 15px;
   left: 30%;
 `;
 
 const AdvancedWrap = styled.div`
-  width: 50px;
+  width: 250px;
   position: absolute;
   top: 75px;
   left: 30%;
@@ -57,6 +57,11 @@ const TextWrap = styled.div`
 `;
 
 const Modal = ({ showModal, setShowModal }) => {
+  const [query, setQuery] = useState('');
+  const [keywordQuery, setKeywordQuery] = useState('');
+  const [writerQuery, setWriterQuery] = useState('');
+  const [dateQuery, setDateQuery] = useState('');
+  const history = useHistory();
   const modalRef = useRef();
   const closeModal = e => {
     if (modalRef.current === e.target) {
@@ -75,47 +80,62 @@ const Modal = ({ showModal, setShowModal }) => {
                   기본검색
                 </TextWrap>
                 <StandardWrap>
-                  <Input
-                    float="left"
-                    color="blue"
-                    width="350px"
-                    height="40px"
-                    paddingsize="3px"
-                    fontsize="15px"
+                  <TextInput
+                    inputStyle={{
+                      marginBottom: 18,
+                      fontSize: 15,
+                    }}
+                    placeholder="내용을 입력해 주세요."
+                    type="text"
+                    value={decodeURIComponent(query)}
+                    onChange={e => setQuery(e.target.value)}
+                    onKeyPress={e => {
+                      if (e.key === 'Enter') {
+                        if (query === '') {
+                          alert('검색어를 입력 해 주세요.');
+                          return;
+                        }
+                        const params = new URLSearchParams({ query });
+                        history.push(
+                          `search?${decodeURIComponent(params.toString())}`
+                        );
+                      }
+                    }}
                   />
                 </StandardWrap>
                 <TextWrap top="24%" right="10%" bottom="31%">
                   고급검색
                 </TextWrap>
                 <AdvancedWrap>
-                  <Input
-                    float="left"
-                    color="blue"
-                    width="350px"
-                    height="40px"
-                    paddingsize="3px"
-                    fontsize="15px"
-                    placeholder="단어/ 문장검색"
+                  <TextInput
+                    inputStyle={{
+                      marginBottom: 18,
+                      fontSize: 15,
+                    }}
+                    placeholder="단어/문장 검색"
+                    type="text"
+                    value={decodeURIComponent(keywordQuery)}
+                    onChange={e => setKeywordQuery(e.target.value)}
                   />
-                  <br /> <br />
-                  <Input
-                    float="left"
-                    color="blue"
-                    width="350px"
-                    height="40px"
-                    paddingsize="3px"
-                    fontsize="15px"
-                    placeholder="최초 작성자"
+                  <TextInput
+                    inputStyle={{
+                      marginBottom: 18,
+                      fontSize: 15,
+                    }}
+                    placeholder="작성자"
+                    type="text"
+                    value={decodeURIComponent(writerQuery)}
+                    onChange={e => setWriterQuery(e.target.value)}
                   />
-                  <br /> <br />
-                  <Input
-                    float="left"
-                    color="blue"
-                    width="350px"
-                    height="40px"
-                    paddingsize="3px"
-                    fontsize="15px"
-                    placeholder="최종 수정자"
+                  <TextInput
+                    inputStyle={{
+                      marginBottom: 18,
+                      fontSize: 15,
+                    }}
+                    placeholder="생성 날짜"
+                    type="text"
+                    value={decodeURIComponent(dateQuery)}
+                    onChange={e => setDateQuery(e.target.value)}
                   />
                 </AdvancedWrap>
               </ModalContent>
