@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TiArrowSortedDown } from 'react-icons/ti';
 import { Menu, MenuItem } from '@mantine/core';
 import styled from 'styled-components';
 import { dropdownHeaderColorMap } from '../../lib/styles/palette';
@@ -10,6 +11,9 @@ const DropDownBlock = styled.div`
 const DropDownHeader = styled(Menu)``;
 
 const DropDownWrap = styled.button`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   color: ${props => dropdownHeaderColorMap[props.color].color};
   background-color: ${props => dropdownHeaderColorMap[props.color].background};
   cursor: pointer;
@@ -18,7 +22,6 @@ const DropDownWrap = styled.button`
       dropdownHeaderColorMap[props.color].hoverBackground};
   }
   margin-bottom: 0.8em;
-  padding: 0.4em;
   width: ${props => props.width || '100px'};
   height: ${props => props.height || '30px'};
   padding-right: 7%;
@@ -51,6 +54,7 @@ const DropDown = ({
             height={height}
           >
             {menuTitle}
+            <TiArrowSortedDown />
           </DropDownWrap>
         }
       >

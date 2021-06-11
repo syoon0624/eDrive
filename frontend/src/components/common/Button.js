@@ -13,7 +13,7 @@ const ButtonBlock = styled.div`
 const Buttons = ({ children, color, float, width, fontsize }) => {
   return (
     <ButtonBlock float={float} width={width} fontsize={fontsize}>
-      <Button fullWidth size="lg" color={color || 'blue'}>
+      <Button size="lg" color={color || 'blue'}>
         {children}
       </Button>
     </ButtonBlock>

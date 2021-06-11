@@ -146,7 +146,7 @@ const Header = () => {
           <SortOptionContainer>
             <DropDownButton
               color="white"
-              width="85px"
+              width="100px"
               fontsize="15px"
               height="36px"
               title="정렬(기본)"
@@ -156,7 +156,7 @@ const Header = () => {
                 { id: 2, name: '크기높은순' },
                 { id: 3, name: '크기낮은순' },
               ]}
-            />
+            />{' '}
           </SortOptionContainer>
           <SearchOptionContainer onClick={openModal}>
             <Button color="gray">고급 검색</Button>
