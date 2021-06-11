@@ -37,6 +37,8 @@ const DropDown = ({
   width,
   height,
   title = '전체',
+  menuPosition,
+  size,
 }) => {
   const [menuTitle, setTitle] = useState('');
   useEffect(() => {
@@ -45,6 +47,8 @@ const DropDown = ({
   return (
     <DropDownBlock float={float} color={color} title={title}>
       <DropDownHeader
+        menuPosition={menuPosition}
+        size={size}
         control={
           <DropDownWrap
             options={options}
