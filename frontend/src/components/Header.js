@@ -134,9 +134,7 @@ const Header = () => {
               />
             </DropDownWrap>
           </DropDownContainer>
-          <InputBlock color="blue" fontsize="20px" width="850px" display="">
-            <input />
-          </InputBlock>
+          <InputBlock color="blue" fontsize="20px" width="850px" display="" />
         </SearchContainer>
         <MenuContainer>
           <ul>
