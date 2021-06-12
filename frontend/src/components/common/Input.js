@@ -7,23 +7,25 @@ import { inputColorMap } from '../../lib/styles/palette';
 
 const InputBlock = styled.div`
   width: ${props => props.width};
-  float: ${props => props.float || 'left'};
   height: ${props => props.height};
+  position: relative;
 `;
 
 const InputWrap = styled.div`
   padding-top: ${props => props.paddingsize};
+  position: relative;
   padding-left: 10px;
-  width: 70%;
   height: 100%;
   color: ${props => inputColorMap[props.color].color};
   outline: none;
   font-size: ${props => props.size};
   border: 3px solid ${props => inputColorMap[props.color].borderColor};
-  float: left;
+  width: 100%;
 `;
 const SearchIconWrap = styled.div`
-  float: left;
+  position: absolute;
+  right: 0;
+  top: 0;
 `;
 
 const MyInput = ({
