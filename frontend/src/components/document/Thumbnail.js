@@ -1,11 +1,15 @@
 import { Image, Text } from '@mantine/core';
 import React from 'react';
+import styled from 'styled-components';
 
+const ImageWrapper = styled.div`
+  display: flex;
+`;
 const Thumbnails = ({ srcs }) => {
   return (
     <>
       <Text style={{ marginTop: '1rem' }}>문서 내 이미지</Text>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <ImageWrapper>
         {srcs.map(src => (
           <Image
             width={200}
@@ -15,7 +19,7 @@ const Thumbnails = ({ srcs }) => {
             withPlaceholder
           />
         ))}
-      </div>
+      </ImageWrapper>
     </>
   );
 };
