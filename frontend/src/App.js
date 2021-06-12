@@ -1,9 +1,12 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import dotenv from 'dotenv';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SearchPage from './pages/SearchPage';
+
+dotenv.config();
 
 const GlobalStyle = createGlobalStyle`
   html,
