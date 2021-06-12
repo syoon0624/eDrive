@@ -1,23 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Documents from '../components/Documents';
 import Header from '../components/Header';
-import Main from '../components/document';
 
 const SearchPage = () => {
-  const parsedDocuments = useSelector(state => state.parsedDocuments);
-
-  if (parsedDocuments.length === 0) {
-    return (
-      <>
-        <Header />
-        <div>검색 결과가 없습니다.</div>
-      </>
-    );
-  }
+  const { documents } = useSelector(state => state.parsedDocuments);
+  console.log(documents);
   return (
     <>
       <Header />
-      <Main />
+      {documents.length === 0 ? (
+        <div>검색 결과가 없습니다.</div>
+      ) : (
+        <Documents datas={documents} />
+      )}
     </>
   );
 };
