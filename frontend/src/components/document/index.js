@@ -22,7 +22,7 @@ const Document = () => {
     templist.push(
       <Container
         style={{
-          padding: '2rem 4rem',
+          padding: '2rem 2rem',
           margin: '2rem 4rem',
           border: '1px solid black',
         }}
