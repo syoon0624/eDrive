@@ -9,7 +9,6 @@ const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 7%;
 `;
 
 const Container = styled.div`
@@ -27,9 +26,8 @@ const LogoWrap = styled.div`
 `;
 
 const SearchBlock = styled.div`
-  display: inline-block;
-  width: 100%;
-  margin-left: 23%;
+  display: flex;
+  width: 50%;
 `;
 const LoginButtonBlock = styled.div`
   position: fixed;
@@ -57,9 +55,8 @@ const HomePage = () => {
               { id: 2, name: '개인' },
               { id: 3, name: '부서' },
             ]}
-            float="left"
           />
-          <Input color="blue" paddingsize="10px" width="700px" display />
+          <Input color="blue" paddingsize="10px" width="100%" display />
         </SearchBlock>
 
         {/* Todo : 로그인 했을 경우 로그인 버튼 숨기기 */}

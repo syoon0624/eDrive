@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { HiOutlineDocumentDownload } from 'react-icons/hi';
 import palette from '../../lib/styles/palette';
 
-const File = ({ filename }) => {
+const File = ({ filename, filepath }) => {
   return (
-    <Link style={{ color: palette.blue6 }} to="/">
+    <a style={{ color: palette.blue6 }} href={filepath}>
       {filename}
-    </Link>
+      <HiOutlineDocumentDownload />
+    </a>
   );
 };
 export default File;

@@ -13,7 +13,6 @@ const HeaderHeight = '170px';
 
 const HeaderTop = styled.div`
   background-color: black;
-  float: up;
   height: 20px;
 `;
 const MainContainer = styled.div`
@@ -32,9 +31,9 @@ const MenuContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  margin-top: 10px;
-  float: left;
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 1%;
   img {
     width: 130px;
 
@@ -44,13 +43,15 @@ const LogoContainer = styled.div`
 `;
 
 const SearchContainer = styled.div`
+  display: flex;
+  width: 70%;
+  position: relative;
   margin-top: 20px;
 `;
 
 const SLink = styled(NavLink)`
   list-style-type: none;
   color: black;
-  float: left;
   line-height: 55px;
   vertical-align: middle;
   text-align: center;
@@ -75,16 +76,13 @@ const SLink = styled(NavLink)`
   }
 `;
 const DropDownWrap = styled.div``;
-const SearchOptionContainer = styled.div`
-  float: left;
-`;
+const SearchOptionContainer = styled.div``;
 
-const SortOptionContainer = styled.div`
-  float: left;
-`;
+const SortOptionContainer = styled.div``;
 
 const OptionContainer = styled.div`
   position: absolute;
+  display: flex;
   top: 132px;
   left: 750px;
 `;
@@ -100,9 +98,7 @@ const AirContainer = styled.div`
   height: ${HeaderHeight};
 `;
 
-const DropDownContainer = styled.div`
-  flex-direction: column;
-`;
+const DropDownContainer = styled.div``;
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -117,10 +113,10 @@ const Header = () => {
     <>
       <MainContainer>
         <HeaderTop />
-        <LogoContainer onClick={onMainClick}>
-          <img src="eDrive_logo_v2.png" alt="" />
-        </LogoContainer>
         <SearchContainer>
+          <LogoContainer onClick={onMainClick}>
+            <img src="eDrive_logo_v2.png" alt="" />
+          </LogoContainer>
           <DropDownContainer>
             <DropDownWrap>
               <DropDownButton
@@ -134,7 +130,7 @@ const Header = () => {
               />
             </DropDownWrap>
           </DropDownContainer>
-          <InputBlock color="blue" fontsize="20px" width="850px" display="">
+          <InputBlock color="blue" fontsize="20px" width="70%" display>
             <input />
           </InputBlock>
         </SearchContainer>
