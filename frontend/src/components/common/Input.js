@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { TextInput } from '@mantine/core';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import SearchBox from './SearchBox';
 import { inputColorMap } from '../../lib/styles/palette';
+import { esApi } from '../../lib/api/elasticsearch';
+import { setParsedDocuments } from '../../features/parsedDocumentsSlice';
 
 const InputBlock = styled.div`
   width: ${props => props.width};
@@ -42,10 +45,16 @@ const MyInput = ({
   const history = useHistory();
   const search = useLocation();
   const name = search.search.substring(7);
-  useEffect(() => {
-    setQuery(name);
-  }, []);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const setSearchDatas = async () => {
+      const { results } = await esApi.search(name);
+      dispatch(setParsedDocuments(results));
+    };
+    setQuery(name);
+    setSearchDatas();
+  }, [name]);
   return (
     <InputBlock
       color={color}
