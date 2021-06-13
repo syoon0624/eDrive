@@ -2,9 +2,8 @@ import React from 'react';
 import Document from './document';
 
 const Documents = ({ datas }) => {
-  console.log(datas);
   return (
-    <>
+    <div>
       {datas.map(data => {
         const {
           content,
@@ -14,7 +13,6 @@ const Documents = ({ datas }) => {
           writer,
           images,
         } = data;
-        console.log(data);
         return (
           <Document
             content={content.raw}
@@ -26,7 +24,7 @@ const Documents = ({ datas }) => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 

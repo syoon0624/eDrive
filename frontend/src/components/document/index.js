@@ -13,7 +13,6 @@ const Document = ({
   images,
 }) => {
   const srcs = images.map(image => JSON.parse(image).image_path);
-  console.log(content);
   const limit = 250;
   const toggleEllipsis = (str, _limit) => ({
     string: str.slice(0, _limit),
@@ -30,13 +29,7 @@ const Document = ({
       <File filename={filename} filepath={filePath} />
       <Text color="green">경로: {filePath}</Text>
       <Text>{toggleEllipsis(content, limit).string}...</Text>
-      <Thumbnails
-        srcs={srcs}
-        // srcs={[
-        //   'https://yoonsbucket.s3.amazonaws.com/book_report_1.png',
-        //   'https://yoonsbucket.s3.amazonaws.com/book_report_2.png',
-        // ]}
-      />
+      <Thumbnails srcs={srcs} />
     </Container>
   );
 };

@@ -5,7 +5,6 @@ import Header from '../components/Header';
 
 const SearchPage = () => {
   const { documents } = useSelector(state => state.parsedDocuments);
-  console.log(documents);
   return (
     <>
       <Header />
