@@ -26,11 +26,10 @@ const Document = ({
     <Container
       style={{
         padding: '2rem 2rem',
-        margin: '2rem 4rem',
-        border: '1px solid black',
+        margin: '0 4rem',
       }}
     >
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', margin: '0.5rem 0' }}>
         <File filename={filename} filepath={filePath} />
         <Popover
           opened={opened}
@@ -39,7 +38,13 @@ const Document = ({
             <FaSearchPlus
               onMouseEnter={() => setOpened(true)}
               onMouseLeave={() => setOpened(false)}
-              style={{ marginTop: 3, marginLeft: 3, color: '#868e96' }}
+              style={{
+                marginTop: 3,
+                marginLeft: 3,
+                color: '#868e96',
+                border: 'none',
+                outline: 'none',
+              }}
             />
           }
           position="bottom-start"

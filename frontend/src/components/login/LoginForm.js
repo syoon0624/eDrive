@@ -4,6 +4,7 @@ import { useForm } from '@mantine/hooks';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
+import Logo from '../Logo';
 
 const LoginFormBlock = styled.div`
   display: flex;
@@ -15,7 +16,9 @@ const ButtonBlock = styled.div`
   justify-content: space-between;
   margin-top: 2rem;
 `;
-const FormBlock = styled.div``;
+const FormBlock = styled.div`
+  padding-top: 2rem;
+`;
 const LoginForm = () => {
   const { onSubmit, errors, values, setFieldValue } = useForm({
     initialValues: {
@@ -31,16 +34,16 @@ const LoginForm = () => {
     <LoginFormBlock>
       <Container
         size={CONTAINER_SIZES.xs}
-        padding="xs"
+        padding={20}
         style={{
           display: 'block',
           width: CONTAINER_SIZES.xs,
           padding: '5rem',
-          border: `1px ${palette.gray3} solid`,
+          border: `1px ${palette.gray5} solid`,
           borderRadius: '5px',
         }}
       >
-        <h2>Logo</h2>
+        <Logo />
         <FormBlock>
           <TextInput
             required
