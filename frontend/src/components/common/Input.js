@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TextInput } from '@mantine/core';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchBox from './SearchBox';
 import { inputColorMap } from '../../lib/styles/palette';
 import { esApi } from '../../lib/api/elasticsearch';
@@ -47,16 +47,27 @@ const MyInput = ({
   const name = decodeURIComponent(
     new URLSearchParams(search).get('query') || ''
   );
+  const option = decodeURIComponent(
+    new URLSearchParams(search).get('option') || ''
+  );
   const dispatch = useDispatch();
+  const { option: currentSearchOption } = useSelector(
+    state => state.searchOption
+  );
 
   useEffect(() => {
     const setSearchDatas = async () => {
-      const { results } = await esApi.search(name);
-      dispatch(setParsedDocuments(results));
+      if (option === '') {
+        const { results } = await esApi.search(name);
+        dispatch(setParsedDocuments(results));
+      } else {
+        const { results } = await esApi.searchWithOption(name, option);
+        dispatch(setParsedDocuments(results));
+      }
     };
     setQuery(name);
     setSearchDatas();
-  }, [name]);
+  }, [name, option]);
 
   return (
     <InputBlock
@@ -84,7 +95,13 @@ const MyInput = ({
                 alert('검색어를 입력 해 주세요.');
                 return;
               }
-              const params = new URLSearchParams({ query });
+              const searchRequest = {};
+              searchRequest.query = query;
+              if (currentSearchOption === 'WRITER')
+                searchRequest.option = 'writer';
+              if (currentSearchOption === 'CONTENT')
+                searchRequest.option = 'content';
+              const params = new URLSearchParams(searchRequest);
               history.push(`search?${decodeURIComponent(params.toString())}`);
             }
           }}
@@ -96,7 +113,13 @@ const MyInput = ({
             alert('검색어를 입력 해 주세요.');
             return;
           }
-          const params = new URLSearchParams({ query });
+          const searchRequest = {};
+          searchRequest.query = query;
+          if (currentSearchOption === 'WRITER') searchRequest.option = 'writer';
+          if (currentSearchOption === 'CONTENT')
+            searchRequest.option = 'content';
+
+          const params = new URLSearchParams(searchRequest);
           history.push(`search?${decodeURIComponent(params.toString())}`);
         }}
       >
