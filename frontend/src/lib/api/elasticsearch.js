@@ -19,4 +19,12 @@ export const esApi = {
 
     return res.data;
   },
+  // searchByFilter: async (filters, searchWord = '') => {
+  //   // const res = await esInstance.post(
+  //   //   `/api/as/v1/engines/${process.env.REACT_APP_ENGINE_NAME}/search`,
+  //   //   {
+  //   //     query: searchWord,
+  //   //   }
+  //   // );
+  // },
 };

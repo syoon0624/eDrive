@@ -43,8 +43,10 @@ const MyInput = ({
 }) => {
   const [query, setQuery] = useState('');
   const history = useHistory();
-  const search = useLocation();
-  const name = decodeURIComponent(search.search.substring(7));
+  const { search } = useLocation();
+  const name = decodeURIComponent(
+    new URLSearchParams(search).get('query') || ''
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
