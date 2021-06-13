@@ -19,4 +19,17 @@ export const esApi = {
 
     return res.data;
   },
+  searchWithOption: async (searchWord, option) => {
+    const res = await esInstance.post(
+      `/api/as/v1/engines/${process.env.REACT_APP_ENGINE_NAME}/search`,
+      {
+        query: searchWord,
+        search_fields: {
+          [option]: {},
+        },
+      }
+    );
+
+    return res.data;
+  },
 };

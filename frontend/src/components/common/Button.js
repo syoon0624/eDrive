@@ -18,10 +18,16 @@ const Buttons = ({
   width,
   fontsize,
   icon = '',
+  onClick,
 }) => {
   return (
     <ButtonBlock float={float} width={width} fontsize={fontsize}>
-      <Button size={size} color={color || 'blue'} rightIcon={icon}>
+      <Button
+        onClick={onClick}
+        size={size}
+        color={color || 'blue'}
+        rightIcon={icon}
+      >
         {children}
       </Button>
     </ButtonBlock>

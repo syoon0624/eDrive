@@ -8,7 +8,7 @@ const Background = styled.div``;
 
 const ModalWrapper = styled.div`
   width: 400px;
-  height: 300px;
+  height: 194px;
 `;
 
 const ModalContent = styled.div`
@@ -23,13 +23,13 @@ const ModalContent = styled.div`
 const SearchWrap = styled.div`
   position: absolute;
   top: 80%;
-  left: 20%;
+  right: 20%;
 `;
 
 const CloseWrap = styled.div`
   position: absolute;
   top: 80%;
-  right: 20%;
+  left: 20%;
 `;
 
 const StandardWrap = styled.div`
@@ -51,7 +51,6 @@ const TextWrap = styled.div`
   width: 360px;
   top: ${props => props.top};
   right: ${props => props.right};
-  border-bottom: 2px solid #dee2e6;
   padding-left: 20px;
   padding-bottom: ${props => props.bottom};
 `;
@@ -59,8 +58,7 @@ const TextWrap = styled.div`
 const Modal = ({ showModal, setShowModal }) => {
   const [query, setQuery] = useState('');
   const [keywordQuery, setKeywordQuery] = useState('');
-  const [writerQuery, setWriterQuery] = useState('');
-  const [dateQuery, setDateQuery] = useState('');
+  const [writer, setWriter] = useState('');
   const history = useHistory();
   const modalRef = useRef();
   const closeModal = e => {
@@ -76,7 +74,7 @@ const Modal = ({ showModal, setShowModal }) => {
           <Card shadow="lg">
             <ModalWrapper>
               <ModalContent>
-                <TextWrap top="6%" right="10%" bottom="4%" height="40px">
+                <TextWrap top="8%" right="10%" bottom="4%" height="40px">
                   기본검색
                 </TextWrap>
                 <StandardWrap>
@@ -103,7 +101,7 @@ const Modal = ({ showModal, setShowModal }) => {
                     }}
                   />
                 </StandardWrap>
-                <TextWrap top="24%" right="10%" bottom="31%">
+                <TextWrap top="34%" right="10%" bottom="31%">
                   고급검색
                 </TextWrap>
                 <AdvancedWrap>
@@ -124,28 +122,29 @@ const Modal = ({ showModal, setShowModal }) => {
                     }}
                     placeholder="작성자"
                     type="text"
-                    value={decodeURIComponent(writerQuery)}
-                    onChange={e => setWriterQuery(e.target.value)}
-                  />
-                  <TextInput
-                    inputStyle={{
-                      marginBottom: 18,
-                      fontSize: 15,
-                    }}
-                    placeholder="생성 날짜"
-                    type="text"
-                    value={decodeURIComponent(dateQuery)}
-                    onChange={e => setDateQuery(e.target.value)}
+                    value={decodeURIComponent(writer)}
+                    onChange={e => setWriter(e.target.value)}
                   />
                 </AdvancedWrap>
               </ModalContent>
               <CloseWrap onClick={() => setShowModal(prev => !prev)}>
-                <Button width="100px" color="blue">
+                <Button width="100px" color="gray">
                   닫기
                 </Button>
               </CloseWrap>
-              <SearchWrap>
-                <Button width="100px" color="gray">
+              <SearchWrap
+                onClick={() => {
+                  const searchQuery = {};
+                  if (query !== '') searchQuery.query = query;
+                  if (keywordQuery !== '') searchQuery.keyword = keywordQuery;
+                  if (writer !== '') searchQuery.writer = writer;
+                  const params = new URLSearchParams(searchQuery);
+                  history.push(
+                    `search?${decodeURIComponent(params.toString())}`
+                  );
+                }}
+              >
+                <Button width="100px" color="blue">
                   검색
                 </Button>
               </SearchWrap>

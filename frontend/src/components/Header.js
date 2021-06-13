@@ -126,7 +126,11 @@ const Header = () => {
                 float="left"
                 fontsize="20px"
                 height="50px"
-                options={[{ id: 1, name: '전체' }]}
+                options={[
+                  { id: 0, name: '전체' },
+                  { id: 1, name: '작성자' },
+                  { id: 2, name: '내용' },
+                ]}
               />
             </DropDownWrap>
           </DropDownContainer>

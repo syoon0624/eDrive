@@ -51,9 +51,9 @@ const HomePage = () => {
             fontsize="20px"
             height="50px"
             options={[
-              { id: 1, name: '전체' },
-              { id: 2, name: '개인' },
-              { id: 3, name: '부서' },
+              { id: 0, name: '전체' },
+              { id: 1, name: '작성자' },
+              { id: 2, name: '내용' },
             ]}
           />
           <Input color="blue" paddingsize="10px" width="100%" display />
