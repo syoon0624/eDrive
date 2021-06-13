@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { TiArrowSortedDown } from 'react-icons/ti';
 import { Menu, MenuItem } from '@mantine/core';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { dropdownHeaderColorMap } from '../../lib/styles/palette';
+import { setSearchOption } from '../../features/searchOption';
 
 const DropDownBlock = styled.div`
   margin: 0 auto;
@@ -41,6 +43,7 @@ const DropDown = ({
   size,
 }) => {
   const [menuTitle, setTitle] = useState('');
+  const dispatch = useDispatch();
   useEffect(() => {
     setTitle(title);
   }, []);
@@ -62,14 +65,15 @@ const DropDown = ({
           </DropDownWrap>
         }
       >
-        {options.map(friend => (
+        {options.map(option => (
           <MenuItem
-            value={friend.id}
+            value={option.id}
             onClick={() => {
-              setTitle(friend.name);
+              dispatch(setSearchOption(option.id));
+              setTitle(option.name);
             }}
           >
-            {friend.name}
+            {option.name}
           </MenuItem>
         ))}
       </DropDownHeader>
