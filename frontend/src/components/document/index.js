@@ -1,8 +1,11 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Container, Text } from '@mantine/core';
+import React, { useState } from 'react';
+import { Container, Popover, Text } from '@mantine/core';
+import { FaSearchPlus } from 'react-icons/fa';
 import File from './File';
 import Thumbnails from './Thumbnail';
+import Detail from '../Detail';
 
 const Document = ({
   content,
@@ -17,6 +20,7 @@ const Document = ({
   const toggleEllipsis = (str, _limit) => ({
     string: str.slice(0, _limit),
   });
+  const [opened, setOpened] = useState(false);
 
   return (
     <Container
@@ -26,7 +30,30 @@ const Document = ({
         border: '1px solid black',
       }}
     >
-      <File filename={filename} filepath={filePath} />
+      <div style={{ display: 'flex' }}>
+        <File filename={filename} filepath={filePath} />
+        <Popover
+          opened={opened}
+          onClose={() => setOpened(false)}
+          target={
+            <FaSearchPlus
+              onMouseEnter={() => setOpened(true)}
+              onMouseLeave={() => setOpened(false)}
+              style={{ marginTop: 3, marginLeft: 3, color: '#868e96' }}
+            />
+          }
+          position="bottom-start"
+          gutter={50}
+          bodyStyle={{ pointerEvents: 'none' }}
+        >
+          <Detail
+            filename={filename}
+            filePath={filePath}
+            writer={writer}
+            createdDate={createdDate}
+          />
+        </Popover>
+      </div>
       <Text color="green">경로: {filePath}</Text>
       <Text>{toggleEllipsis(content, limit).string}...</Text>
       <Thumbnails srcs={srcs} />
