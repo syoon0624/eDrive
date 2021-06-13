@@ -16,7 +16,7 @@ const ImageWrapper = styled.div`
 const Thumbnails = ({ srcs }) => {
   const [lists, setLists] = useState([]);
   const placeholder = () => {
-    if (srcs.length <= 4) {
+    if (srcs.length < 4) {
       const list = [];
       const tempImgList = 4 - srcs.length;
       for (let i = 0; i < tempImgList; i += 1) {

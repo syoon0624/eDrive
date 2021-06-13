@@ -44,7 +44,7 @@ const MyInput = ({
   const [query, setQuery] = useState('');
   const history = useHistory();
   const search = useLocation();
-  const name = search.search.substring(7);
+  const name = decodeURIComponent(search.search.substring(7));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,6 +55,7 @@ const MyInput = ({
     setQuery(name);
     setSearchDatas();
   }, [name]);
+
   return (
     <InputBlock
       color={color}
