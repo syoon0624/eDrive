@@ -70,7 +70,7 @@ const LoginForm = () => {
             <Link to="/">
               <Button variant="outline">홈으로</Button>
             </Link>
-            <Button type="button" onClick={onSubmit(v => console.log(v))}>
+            <Button type="button" onClick={onSubmit}>
               로그인
             </Button>
           </ButtonBlock>
